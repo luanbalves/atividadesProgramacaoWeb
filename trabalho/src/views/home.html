@@ -166,26 +166,26 @@
     </div>
 </div>  
 
+<a href="#" id="minhasReservas">MINHAS RESERVAS</a>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const minhasReservasButton = document.getElementById('minhasReservas');
+    const popupContainer = document.getElementById('popupContainer');
+    const fecharPopupButton = document.getElementById('fecharPopup');
 
-    if (minhasReservasButton) {
+    if (minhasReservasButton && popupContainer && fecharPopupButton) {
       minhasReservasButton.addEventListener('click', function () {
-        const popupContainer = document.getElementById('popupContainer');
-        const fecharPopupButton = document.getElementById('fecharPopup');
+        popupContainer.style.display = 'block';
 
-        if (popupContainer && fecharPopupButton) {
-          popupContainer.style.display = 'block';
-
-          fecharPopupButton.addEventListener('click', function () {
-            popupContainer.style.display = 'none';
-          });
-        }
+        fecharPopupButton.addEventListener('click', function () {
+          window.location.href = '/reservas';
+        });
       });
     }
   });
 </script>
+
 
 </body>
 </html>

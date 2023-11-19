@@ -34,12 +34,11 @@ app.get('/home', autenticacaoController.verificarAutenticacao, (req, res) => {
   res.render('home.html');
 });
 
-app.get('/testar_homeview', reservaController.homeView);
+app.get('/reservas', autenticacaoController.verificarAutenticacao,reservaController.homeView);
 
-
+app.use('/', require('./src/routes/reservaRoutes'));
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));
-app.use('/', require('./src/routes/reservaRoutes'));
 
 db.sync(() => console.log(`Banco de dados conectado`));
 
