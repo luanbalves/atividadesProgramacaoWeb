@@ -23,6 +23,7 @@
       <a href="#cardapio">CARDÁPIO</a>
       <a href="#conheca">CONHEÇA-NOS</a>
       <a href="/sair">SAIR</a>
+      <a href="#" id="minhasReservas">MINHAS RESERVAS</a>
     </nav>
   </div>
 </header>
@@ -39,13 +40,13 @@
     <form action="/submit_reserva" method="post">
         <div class="form-group">
           <label for="name">Nome:</label>
-          <input type="text" id="name" name="name" required>
+          <input type="text" id="nome" name="nome" required>
         </div>
   
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
-        </div>
+        </div> -->
   
         <div class="form-group">
           <label for="data">Data:</label>
@@ -98,6 +99,14 @@
         </div>
   
         <input type="submit" value="ENVIAR" class="submit-btn">
+
+        {{#sucesso}}
+        <div class="alert alert-success">Reserva feita com sucesso!</div>
+        {{/sucesso}} 
+        {{#erro}}
+        <div class="alert alert-danger">Erro ao fazer reserva!</div>
+        {{/erro}}
+
       </form>
 
     <div class="mesa">
@@ -135,5 +144,17 @@
   <p>Site desenvolvido por alunos do curso de Engenharias da UnB/FGA.</p>
 </footer>
 
+<div id="popupContainer">
+    <div id="popupContent">
+      <h2>Minhas Reservas</h2>
+      <ul id="reservasList">
+      </ul>
+      <button id="fecharPopup">Fechar</button>
+    </div>
+</div>  
+
 </body>
 </html>
+  
+  
+  

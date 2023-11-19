@@ -34,6 +34,7 @@ app.use(session({
 
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));
+app.use('/', require('./src/routes/reservaRoutes'));
 
 db.sync(() => console.log(`Banco de dados conectado`));
 
