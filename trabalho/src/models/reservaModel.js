@@ -8,6 +8,10 @@ const Reserva = database.define("reserva", {
     allowNull: false,
     primaryKey: true,
   },
+  id_usuario: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
   nome: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -21,6 +25,10 @@ const Reserva = database.define("reserva", {
     allowNull: false,
   },
   qtd_pessoas: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  indicador_ativo: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },

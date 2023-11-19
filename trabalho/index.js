@@ -29,18 +29,9 @@ app.get('/cadastro', (req, res) => {
     res.render('cadastro.html');
 });
 
-// index.js
-
-// ...
-
-// Rota protegida (requer autenticação)
 app.get('/home', autenticacaoController.verificarAutenticacao, (req, res) => {
   res.render('home.html');
 });
-
-// ...
-
-
 
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));
