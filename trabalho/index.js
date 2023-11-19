@@ -2,6 +2,7 @@ const express = require('express');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const autenticacaoController = require('./src/controllers/autenticacaoController')
+const reservaController = require('./src/controllers/reservaController')
 const db = require('./src/db')
 
 const app = express();
@@ -32,6 +33,9 @@ app.get('/cadastro', (req, res) => {
 app.get('/home', autenticacaoController.verificarAutenticacao, (req, res) => {
   res.render('home.html');
 });
+
+app.get('/testar_homeview', reservaController.homeView);
+
 
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));

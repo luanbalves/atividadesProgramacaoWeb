@@ -157,6 +157,10 @@
           Número de pessoas: {{qtd_pessoas}}<br><br>
         </li>
       {{/reservas}}
+      
+      {{^reservas}}
+        <li>Nenhuma reserva encontrada.</li>
+      {{/reservas}}
       </ul>
       <button id="fecharPopup">Fechar</button>
     </div>
