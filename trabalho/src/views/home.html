@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurante Romeu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<header>
+  <div class="background-header">
+    <div id="retanguloBackground" class="header-title">
+      <h1 class="page-title"><a id="page-title" href="#">ROMEU</a></h1>
+      <img src="/img/bandeira-180.png" alt="bandeira" id="bandeiraRomeu">
+    </div>
+
+    <nav class="header-menu">
+      <a href="#home">HOME</a>
+      <a href="#reservas">RESERVAS</a>
+      <a href="#cardapio">CARDÁPIO</a>
+      <a href="#conheca">CONHEÇA-NOS</a>
+      <a href="/sair">SAIR</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="centro-pagina" id="home">
+    <div class="restaurante-display">
+      <img src="/img/restaurant-1280.png" alt="Restaurante" id="imagemRestaurante">
+    </div>
+  </section>
+
+  <section class="reservar-mesa" id="reservas">
+
+    <form action="/submit_reserva" method="post">
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="data">Data:</label>
+          <input type="date" id="data" name="data" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="horario">Horário:</label>
+          <select id="horario" name="horario" required>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+            <option value="18:00">18:00</option>
+            <option value="20:00">20:00</option>
+            <option value="22:00">22:00</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="qtd_pessoas">N° de Pessoas:</label>
+          <select id="qtd_pessoas" name="qtd_pessoas" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="mesa">N° da Mesa:</label>
+          <select id="mesa" name="mesa" required>
+            <option value="Mesa 1">Mesa 1</option>
+            <option value="Mesa 2">Mesa 2</option>
+            <option value="Mesa 3">Mesa 3</option>
+            <option value="Mesa 4">Mesa 4</option>
+            <option value="Mesa 5">Mesa 5</option>
+            <option value="Mesa 6">Mesa 6</option>
+            <option value="Mesa 7">Mesa 7</option>
+            <option value="Mesa 8">Mesa 8</option>
+            <option value="Mesa 9">Mesa 9</option>
+            <option value="Mesa 10">Mesa 10</option>
+            <option value="Mesa 11">Mesa 11</option>
+          </select>
+        </div>
+  
+        <input type="submit" value="ENVIAR" class="submit-btn">
+      </form>
+
+    <div class="mesa">
+      <img src="/img/mapainterno-525.png" alt="Mapa Interno" id="mapainterno">
+    </div>
+  </section>
+
+  <section class="bloco" id="cardapio">
+    <img src="/img/cardapio1.png" class="zoom" alt="cardápio" id="cardapio1">
+    <img src="/img/cardapio2.png" class="zoom" alt="cardápio" id="cardapio2">
+    <img src="/img/cardapio3.png" class="zoom" alt="cardápio" id="cardapio3">
+  </section>
+
+  <section class="quem-somos" id="conheca">
+    <h1>QUEM SOMOS?</h1>
+    <p id="paragrafo1">
+      A Romeu é um restaurante italiano de luxo pensado e desenvolvido por
+      sete jovens graduandos em Engenharias pela Universidade de Brasília -
+      UnB/FGA. Portanto, se trata de um restaurante/site meramente fictício.
+    </p>
+    <img src="/img/bandeira-300.png" alt="bandeira">
+    <h1 id="titulo2">POR QUE "ROMEU"?</h1>
+    <p id="paragrafo2">
+      O nome foi escolhido devido à semelhança com “Roma”, capital italiana.
+      Também, faz referência à peça escrita por William Shakespeare, Romeu e
+      Julieta. Além destes, os desenvolvedores buscaram ligar a ideia à
+      universidade, por isso, o nome se inicia com ‘R’ e termina com ‘U’,
+      fazendo alusão ao RU, restaurante universitário da UnB.
+    </p>
+    <img src="/img/bandeira-300.png" alt="bandeira">
+  </section>
+</main>
+
+<footer>
+  <p>Site desenvolvido por alunos do curso de Engenharias da UnB/FGA.</p>
+</footer>
+
+</body>
+</html>

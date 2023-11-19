@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="styleLogin.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="/cadastrar_usuario" method="post">
+        <h1>Cadastro</h1>
+
+        <div class="input-box">
+          <input type="text" placeholder="Nome completo" id="nome" name="nome" required />
+          <i class="bx bxs-user"></i>
+        </div>
+
+        <div class="input-box">
+          <input type="text" placeholder="Email" id="email" name="email" required />
+          <i class="bx bxs-envelope"></i>
+        </div>
+
+        <div class="input-box">
+          <input type="password" placeholder="Senha" id="senha" name="senha" required />
+          <i class="bx bxs-lock-alt"></i>
+        </div>
+
+        <button type="submit" class="btn">Cadastrar</button>
+
+        {{#sucesso}}
+        <div class="alert alert-success">Usuário cadastrado com sucesso!</div>
+        {{/sucesso}} 
+        {{#erro}}
+        <div class="alert alert-danger">Erro ao cadastrar usuário!</div>
+        {{/erro}}
+
+      </form>
+    </div>
+  </body>
+</html>
