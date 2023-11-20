@@ -155,6 +155,7 @@
           Horário: {{horario}}<br>
           Mesa: {{mesa}}<br>
           Número de pessoas: {{qtd_pessoas}}<br><br>
+          <button class="excluirReserva" data-id="{{id}}">Excluir Reserva</button>
         </li>
       {{/reservas}}
       
@@ -168,20 +169,42 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const minhasReservasButton = document.getElementById('minhasReservas');
-    const popupContainer = document.getElementById('popupContainer');
-    const fecharPopupButton = document.getElementById('fecharPopup');
+  const minhasReservasButton = document.getElementById('minhasReservas');
+  const popupContainer = document.getElementById('popupContainer');
+  const fecharPopupButton = document.getElementById('fecharPopup');
 
-    if (minhasReservasButton && popupContainer && fecharPopupButton) {
-      minhasReservasButton.addEventListener('click', function () {
-        popupContainer.style.display = 'block';
+  if (minhasReservasButton && popupContainer && fecharPopupButton) {
+    minhasReservasButton.addEventListener('click', function () {
+      popupContainer.style.display = 'block';
 
-        fecharPopupButton.addEventListener('click', function () {
-          window.location.href = '/reservas';
-        });
+      fecharPopupButton.addEventListener('click', function () {
+        window.location.href = '/reservas';
       });
-    }
-  });
+
+      const botoesExcluir = document.getElementsByClassName('excluirReserva');
+      for (const botao of botoesExcluir) {
+        botao.addEventListener('click', async function () {
+          const idReserva = this.getAttribute('data-id');
+
+          try {
+            const response = await fetch(`/excluir_reserva/${idReserva}`, {
+              method: 'POST',
+            });
+
+            if (response.ok) {
+              window.location.reload();
+            } else {
+              console.error('Erro ao excluir a reserva:', response.statusText);
+            }
+          } catch (erro) {
+            console.error('Erro ao excluir a reserva:', erro);
+          }
+        });
+      }
+    });
+  }
+});
+
 </script>
 
 

@@ -35,6 +35,7 @@ app.get('/home', autenticacaoController.verificarAutenticacao, (req, res) => {
 });
 
 app.get('/reservas', autenticacaoController.verificarAutenticacao,reservaController.homeView);
+app.get('/excluir_reserva/:id', autenticacaoController.verificarAutenticacao, reservaController.excluirReserva);
 
 app.use('/', require('./src/routes/reservaRoutes'));
 app.use('/', require('./src/routes/usuarioRoutes'));

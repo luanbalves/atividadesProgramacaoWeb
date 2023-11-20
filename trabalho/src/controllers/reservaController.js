@@ -42,8 +42,25 @@ function cadastrarReserva(req, res) {
     });
 }
 
+async function excluirReserva(req, res) {
+  const idReserva = req.params.id; 
+  try {
+    await Reserva.destroy({
+      where: {
+        id: idReserva,
+      },
+    });
+
+    res.redirect('/reservas'); 
+  } catch (erro) {
+    console.error('Erro ao excluir a reserva:', erro);
+    res.status(500).send('Erro ao excluir a reserva.');
+  }
+}
+
 module.exports = {
   indexView,
   homeView,
   cadastrarReserva,
+  excluirReserva,
 };
