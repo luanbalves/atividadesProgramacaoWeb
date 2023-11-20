@@ -17,7 +17,7 @@ const Reserva = database.define("reserva", {
     allowNull: false,
   },
   data: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false,
   },
   horario: {

@@ -1,4 +1,5 @@
 const Reserva = require("../models/reservaModel");
+const moment = require('moment');
 
 function indexView(req, res) {
   res.render("login.html");
@@ -12,6 +13,9 @@ function homeView(req, res) {
     },
   })
     .then((reservas) => {
+      reservas.forEach(reserva => {
+        reserva.dataValues.data = moment(reserva.data).format('DD/MM/YYYY');
+      });
       res.render("home.html", { reservas });
     })
     .catch((erro_recupera_reservas) => {
