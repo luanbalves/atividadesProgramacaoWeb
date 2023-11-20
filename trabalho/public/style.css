@@ -501,3 +501,12 @@ html {
   cursor: pointer;
 }
 
+.excluirReserva {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background: #f52424;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}

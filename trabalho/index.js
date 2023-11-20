@@ -2,6 +2,7 @@ const express = require('express');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const autenticacaoController = require('./src/controllers/autenticacaoController')
+const reservaController = require('./src/controllers/reservaController')
 const db = require('./src/db')
 
 const app = express();
@@ -29,22 +30,16 @@ app.get('/cadastro', (req, res) => {
     res.render('cadastro.html');
 });
 
-// index.js
-
-// ...
-
-// Rota protegida (requer autenticação)
 app.get('/home', autenticacaoController.verificarAutenticacao, (req, res) => {
   res.render('home.html');
 });
 
-// ...
+app.get('/reservas', autenticacaoController.verificarAutenticacao,reservaController.homeView);
+app.get('/excluir_reserva/:id', autenticacaoController.verificarAutenticacao, reservaController.excluirReserva);
 
-
-
+app.use('/', require('./src/routes/reservaRoutes'));
 app.use('/', require('./src/routes/usuarioRoutes'));
 app.use('/', require('./src/routes/autenticacaoRoutes'));
-app.use('/', require('./src/routes/reservaRoutes'));
 
 db.sync(() => console.log(`Banco de dados conectado`));
 

@@ -22,8 +22,8 @@
       <a href="#reservas">RESERVAS</a>
       <a href="#cardapio">CARDÁPIO</a>
       <a href="#conheca">CONHEÇA-NOS</a>
-      <a href="/sair">SAIR</a>
       <a href="#" id="minhasReservas">MINHAS RESERVAS</a>
+      <a href="/sair">SAIR</a>
     </nav>
   </div>
 </header>
@@ -39,7 +39,7 @@
 
     <form action="/submit_reserva" method="post">
         <div class="form-group">
-          <label for="name">Nome:</label>
+          <label for="nome">Nome:</label>
           <input type="text" id="nome" name="nome" required>
         </div>
   
@@ -148,10 +148,65 @@
     <div id="popupContent">
       <h2>Minhas Reservas</h2>
       <ul id="reservasList">
+        {{#reservas}}
+        <li>
+          <strong>Reserva:</strong><br>
+          Data: {{data}}<br>
+          Horário: {{horario}}<br>
+          Mesa: {{mesa}}<br>
+          Número de pessoas: {{qtd_pessoas}}<br><br>
+          <button class="excluirReserva" data-id="{{id}}">Excluir Reserva</button>
+        </li>
+      {{/reservas}}
+      
+      {{^reservas}}
+        <li>Nenhuma reserva encontrada.</li>
+      {{/reservas}}
       </ul>
       <button id="fecharPopup">Fechar</button>
     </div>
 </div>  
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const minhasReservasButton = document.getElementById('minhasReservas');
+  const popupContainer = document.getElementById('popupContainer');
+  const fecharPopupButton = document.getElementById('fecharPopup');
+
+  if (minhasReservasButton && popupContainer && fecharPopupButton) {
+    minhasReservasButton.addEventListener('click', function () {
+      popupContainer.style.display = 'block';
+
+      fecharPopupButton.addEventListener('click', function () {
+        window.location.href = '/reservas';
+      });
+
+      const botoesExcluir = document.getElementsByClassName('excluirReserva');
+      for (const botao of botoesExcluir) {
+        botao.addEventListener('click', async function () {
+          const idReserva = this.getAttribute('data-id');
+
+          try {
+            const response = await fetch(`/excluir_reserva/${idReserva}`, {
+              method: 'POST',
+            });
+
+            if (response.ok) {
+              window.location.reload();
+            } else {
+              console.error('Erro ao excluir a reserva:', response.statusText);
+            }
+          } catch (erro) {
+            console.error('Erro ao excluir a reserva:', erro);
+          }
+        });
+      }
+    });
+  }
+});
+
+</script>
+
 
 </body>
 </html>
