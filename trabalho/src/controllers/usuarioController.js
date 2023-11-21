@@ -26,7 +26,44 @@ function listarUsuarios(req, res) {
     });
 }
 
+async function atualizarUsuario(req, res) {
+    try {
+      const novoNome = req.body.novoNome;
+      const novaSenha = req.body.novaSenha;
+      const novoEmail = req.body.novoEmail;
+  
+      console.log('Dados do formulário:', novoNome, novaSenha, novoEmail);
+  
+      const [numeroAtualizacoes, usuariosAtualizados] = await Usuario.update(
+        {
+          nome: novoNome,
+          senha: novaSenha,
+          email: novoEmail,
+        },
+        {
+          where: {
+            id: req.session.usuario.id,
+          },
+        }
+      );
+  
+      console.log('Número de atualizações:', numeroAtualizacoes);
+      console.log('Usuários atualizados:', usuariosAtualizados);
+  
+      if (numeroAtualizacoes > 0 || (usuariosAtualizados && usuariosAtualizados[0])) {
+        res.redirect('/');
+      } else {
+        res.status(400).send('Nenhum usuário foi atualizado.');
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar o usuário:', error);
+      res.status(500).send(`Erro ao atualizar o usuário: ${error.message}`);
+    }
+  }
+  
+
 module.exports = {
     cadastrarUsuario,
-    listarUsuarios
+    listarUsuarios,
+    atualizarUsuario,
 }

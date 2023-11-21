@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="atualizarUsuarioForm" action="/alterar_usuario" method="post">
+        <div class="form-group">
+          <label for="novoNome">Novo Nome:</label>
+          <input type="text" id="novoNome" name="novoNome" required />
+        </div>
+      
+        <div class="form-group">
+          <label for="novaSenha">Nova Senha:</label>
+          <input type="password" id="novaSenha" name="novaSenha" required />
+        </div>
+      
+        <div class="form-group">
+          <label for="novoEmail">Novo Email:</label>
+          <input type="email" id="novoEmail" name="novoEmail" required />
+        </div>
+      
+        <button type="submit">Atualizar Usuário</button>
+      </form>
+      
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const alterarUsuarioForm = document.getElementById('alterarUsuarioForm');
+
+    if (alterarUsuarioForm) {
+        alterarUsuarioForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/alterar_usuario', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    console.error('Erro ao atualizar o usuário:', response.statusText);
+                }
+            } catch (erro) {
+                console.error('Erro ao atualizar o usuário:', erro);
+            }
+        });
+    } else {
+        console.error('Elemento "alterarUsuarioForm" não encontrado.');
+    }
+});
+
+    </script>
+</body>
+</html>
