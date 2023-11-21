@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Reserva</title>
+  </head>
+  <body>
+    <form
+      id="editarReservaForm"
+      action="/atualizar_reserva/{{reservaId}}"
+      method="post"
+    >
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required />
+      </div>
+
+      <div class="form-group">
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required />
+      </div>
+
+      <div class="form-group">
+        <label for="horario">Horário:</label>
+        <select id="horario" name="horario" required>
+          <option value="12:00">12:00</option>
+          <option value="14:00">14:00</option>
+          <option value="16:00">16:00</option>
+          <option value="18:00">18:00</option>
+          <option value="20:00">20:00</option>
+          <option value="22:00">22:00</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="qtd_pessoas">N° de Pessoas:</label>
+        <select id="qtd_pessoas" name="qtd_pessoas" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mesa">N° da Mesa:</label>
+        <select id="mesa" name="mesa" required>
+          <option value="Mesa 1">Mesa 1</option>
+          <option value="Mesa 2">Mesa 2</option>
+          <option value="Mesa 3">Mesa 3</option>
+          <option value="Mesa 4">Mesa 4</option>
+          <option value="Mesa 5">Mesa 5</option>
+          <option value="Mesa 6">Mesa 6</option>
+          <option value="Mesa 7">Mesa 7</option>
+          <option value="Mesa 8">Mesa 8</option>
+          <option value="Mesa 9">Mesa 9</option>
+          <option value="Mesa 10">Mesa 10</option>
+          <option value="Mesa 11">Mesa 11</option>
+        </select>
+      </div>
+
+      <input type="submit" value="ENVIAR" class="submit-btn" />
+      <input
+        type="hidden"
+        id="reservaId"
+        name="reservaId"
+        value="{{reservaId}}"
+      />
+
+      <!-- {{#sucesso}}
+            <div class="alert alert-success">Reserva atualizada com sucesso!</div>
+        {{/sucesso}}
+        {{#erro}}
+            <div class="alert alert-danger">Erro ao atualizar a reserva!</div>
+        {{/erro}} -->
+    </form>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const editarReservaForm = document.getElementById("editarReservaForm");
+
+        if (editarReservaForm) {
+          editarReservaForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            console.log("Formulário de Edição Submetido");
+
+            const data = document.getElementById("data").value;
+            const horario = document.getElementById("horario").value;
+            const mesa = document.getElementById("mesa").value;
+            const qtd_pessoas = document.getElementById("qtd_pessoas").value;
+
+            console.log("Dados do Formulário:", {
+              data,
+              horario,
+              mesa,
+              qtd_pessoas,
+            });
+
+            const idReserva = document.getElementById("reservaId").value;
+            console.log("ID da Reserva:", idReserva);
+
+            try {
+              const response = await fetch(`/atualizar_reserva/${idReserva}`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ data, horario, mesa, qtd_pessoas }),
+              });
+
+              if (response.ok) {
+                window.location.reload();
+              } else {
+                console.error("Erro ao editar a reserva:", response.statusText);
+              }
+            } catch (erro) {
+              console.error("Erro ao editar a reserva:", erro);
+            }
+          });
+        } else {
+          console.error('Elemento "editarReservaForm" não encontrado.');
+        }
+      });
+    </script>
+  </body>
+</html>

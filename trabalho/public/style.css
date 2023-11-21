@@ -510,6 +510,17 @@ html {
   border-radius: 3px;
   cursor: pointer;
 }
+
+.editarReservaButton {
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background: #4032de;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 .submit-btn {
   cursor: pointer;
 }

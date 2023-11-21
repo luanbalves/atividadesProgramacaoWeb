@@ -34,8 +34,12 @@ app.get('/home', autenticacaoController.verificarAutenticacao, (req, res) => {
   res.render('home.html');
 });
 
+app.get('/reservas', autenticacaoController.verificarAutenticacao, reservaController.homeView);
 app.get('/reservas', autenticacaoController.verificarAutenticacao,reservaController.homeView);
 app.get('/excluir_reserva/:id', autenticacaoController.verificarAutenticacao, reservaController.excluirReserva);
+app.get('/editar_reserva/:id', reservaController.editarReservaView);
+app.post('/atualizar_reserva/:id', reservaController.atualizarReserva);
+app.post('/editar_reserva/:id', reservaController.atualizarReserva);
 
 app.use('/', require('./src/routes/reservaRoutes'));
 app.use('/', require('./src/routes/usuarioRoutes'));
