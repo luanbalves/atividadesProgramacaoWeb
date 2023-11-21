@@ -91,12 +91,14 @@
             event.preventDefault();
             console.log("Formulário de Edição Submetido");
 
+            const nome = document.getElementById("nome").value;
             const data = document.getElementById("data").value;
             const horario = document.getElementById("horario").value;
             const mesa = document.getElementById("mesa").value;
             const qtd_pessoas = document.getElementById("qtd_pessoas").value;
 
             console.log("Dados do Formulário:", {
+              nome,
               data,
               horario,
               mesa,
@@ -112,7 +114,7 @@
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ data, horario, mesa, qtd_pessoas }),
+                body: JSON.stringify({ nome, data, horario, mesa, qtd_pessoas }),
               });
 
               if (response.ok) {

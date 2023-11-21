@@ -176,6 +176,7 @@
           {{#reservas}}
           <li>
             <strong>Reserva:</strong><br />
+            Nome: {{nome}}<br />
             Data: {{data}}<br />
             Horário: {{horario}}<br />
             Mesa: {{mesa}}<br />
@@ -183,6 +184,7 @@
             <button
               class="editarReservaButton"
               data-id="{{id}}"
+              data-nome="{{nome}}"
               data-data="{{data}}"
               data-horario="{{horario}}"
               data-mesa="{{mesa}}"

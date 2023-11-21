@@ -81,6 +81,7 @@ async function atualizarReserva(req, res) {
     }
 
     const dadosAtualizados = {
+      nome: req.body.nome,
       data: req.body.data,
       horario: req.body.horario,
       mesa: req.body.mesa,
