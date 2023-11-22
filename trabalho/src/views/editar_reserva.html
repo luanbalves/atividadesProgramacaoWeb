@@ -4,8 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Reserva</title>
+    <style>
+      @charset "UTF-08";
+
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+      :root {
+        --cor0: #252525;
+        --cor1: #4b4b4b;
+        --cor2: #abaaaa;
+        --cor3: #259566;
+        --cor4: #1a5c37;
+        --cor5: #063d1e;
+
+        --fonte-padrao: "Poppins", sans-serif;
+        --fonte-logo: "Cormorant", serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin-left: 25%;
+        margin-right: 25%;
+        margin-top: 5%;
+        background-color: var(--cor0);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.582);
+        border-radius: 0px 0px 10px 10px;
+        color: white;
+        font-family: var(--fonte-padrao);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+      }
+
+      form {
+        font-family: var(--fonte-padrao);
+        font-size: 24px;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input,
+      select {
+        font-family: var(--fonte-padrao);
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--cor1);
+        width: 100%;
+        padding: 7px;
+        background-color: var(--cor2);
+        border-radius: 5px;
+        border: 1px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        font-family: var(--fonte-padrao);
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        width: 100%;
+        padding: 5px;
+        background-color: white;
+        border-radius: 5px;
+        margin: 15px 0px 15px 0px;
+        cursor: pointer;
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
+    <h1>Editar reserva</h1>
     <form
       id="editarReservaForm"
       action="/atualizar_reserva/{{reservaId}}"
@@ -114,11 +191,17 @@
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ nome, data, horario, mesa, qtd_pessoas }),
+                body: JSON.stringify({
+                  nome,
+                  data,
+                  horario,
+                  mesa,
+                  qtd_pessoas,
+                }),
               });
 
               if (response.ok) {
-                window.location.href = '/reservas';
+                window.location.href = "/reservas";
               } else {
                 console.error("Erro ao editar a reserva:", response.statusText);
               }
